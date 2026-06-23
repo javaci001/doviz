@@ -2,20 +2,27 @@ pipeline {
     agent any
 
         stages {
-            stage('Hello') {
+            stage('git islemleri') {
                 steps {
-                    sh 'echo "basliyorum"'
-                    // sh 'mkdir /home/ubuntum/Desktop/jenkinsislem/dovizkodindir'
-                    //dir('/home/ubuntum/Desktop/jenkinsislem/') {
-                        git branch: 'main', url: 'https://github.com/javaci001/doviz.git'
-                    //}
+                    sh 'echo "basliyorum"'     
+                    // /var/lib/jenkins/workspace/ucuncu ya doviz repo clone edilir
+                    git branch: 'main', url: 'https://github.com/javaci001/doviz.git'
                 }
             } 
-        stage('Log date') {
+        stage('Dockerfile islemleri') {
             steps {
                 sh '''
-                date
-                pwd
+                cat << EOF >> Dockerfile
+                FROM python:3.8.20
+                ENV PYTHONUNBUFFERED=1
+                WORKDIR /app
+                COPY . .
+                RUN python -m pip install flask
+                RUN python -m pip install beautifulsoup4
+                RUN python -m pip install gunicorn
+                EXPOSE 5000
+                CMD ["python", "app.py"]
+                EOF
                 '''
             }
         }   
