@@ -31,7 +31,7 @@ pipeline {
             steps {
                 sh '''
                 docker build -f Dockerfile -t doviz .
-                docker run -d -p 5555:5555 --name doviz doviz
+                docker run -d -rm -p 5555:5555 --name doviz doviz
                 '''
             }
         }   
