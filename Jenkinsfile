@@ -24,7 +24,7 @@ pipeline {
                 CMD ["python", "app.py"]
                 EOF
                 '''
-            }
+            } 
         }   
         stage('Dockerfile build et ve run et') {
             steps {
