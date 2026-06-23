@@ -20,15 +20,18 @@ pipeline {
                 RUN python -m pip install flask
                 RUN python -m pip install beautifulsoup4
                 RUN python -m pip install gunicorn
-                EXPOSE 5000
+                EXPOSE 5555
                 CMD ["python", "app.py"]
                 EOF
                 '''
             }
         }   
-        stage('hostname yaz') {
+        stage('Dockerfile build et ve run et') {
             steps {
-                sh 'hostname -f'
+                sh '''
+                docker build -f Dockerfile -t doviz .
+                docker run -d -p 5555:5555 --name doviz doviz
+                '''
             }
         }   
     }
