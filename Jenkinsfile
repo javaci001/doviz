@@ -12,7 +12,7 @@ pipeline {
         stage('Dockerfile islemleri') {
             steps {
                 sh '''
-                cat << EOF >> Dockerfile
+                cat > Dcckerfile << 'EOF'
                 FROM python:3.8.20
                 ENV PYTHONUNBUFFERED=1
                 WORKDIR /app
