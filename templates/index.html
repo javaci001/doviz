@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>
+            mmetin döviz kuru web uygulamasi
+        </title>
+    </head>
+    <body>
+        {{ doviz_kurlari }}
+
+        {% for kur_bilgisi in doviz_kurlari %}
+            <li>
+                {{ kur_bilgisi }}
+            </li>
+        {% endfor %}
+        <p>
+        Istek Gönderen Ip Adresi : {{ ip_adresi }}
+
+    </body>
+</html>
