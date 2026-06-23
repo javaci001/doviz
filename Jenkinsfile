@@ -10,7 +10,7 @@ pipeline {
                         git branch: 'main', url: 'https://github.com/javaci001/doviz.git'
                     }
                 }
-            }
+            } 
         stage('Log date') {
             steps {
                 sh '''
