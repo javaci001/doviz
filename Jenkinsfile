@@ -12,7 +12,7 @@ pipeline {
         stage('Dockerfile islemleri') {
             steps {
                 sh '''
-                cat > Dockerfile << 'EOF'
+                cat > Dockerfile << "EOF"
                 FROM python:3.8.20
                 ENV PYTHONUNBUFFERED=1
                 WORKDIR /app
@@ -22,6 +22,7 @@ pipeline {
                 RUN python -m pip install gunicorn
                 EXPOSE 5555
                 CMD ["python", "app.py"]
+                EOF
                 '''
             }
         }   
