@@ -6,9 +6,9 @@ pipeline {
                 steps {
                     sh 'echo "basliyorum"'
                     // sh 'mkdir /home/ubuntum/Desktop/jenkinsislem/dovizkodindir'
-                    dir('/home/ubuntum/Desktop/jenkinsislem/') {
+                    //dir('/home/ubuntum/Desktop/jenkinsislem/') {
                         git branch: 'main', url: 'https://github.com/javaci001/doviz.git'
-                    }
+                    //}
                 }
             } 
         stage('Log date') {
