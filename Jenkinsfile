@@ -22,7 +22,10 @@ pipeline {
                 RUN python -m pip install beautifulsoup4
                 RUN python -m pip install gunicorn
                 EXPOSE 5555
-                ENTRYPOINT ["python", "app.py"]
+                ENV FLASK_APP=app.py
+                ENV FLASK_ENV=development
+                ENTRYPOINT ["flask", "run"]
+                CMD ["--host=0.0.0.0", "--port=5555"]
                 '''
             } 
         }   
