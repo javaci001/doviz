@@ -22,7 +22,6 @@ pipeline {
                 RUN python -m pip install gunicorn
                 EXPOSE 5555
                 CMD ["python", "app.py"]
-                EOF
                 '''
             }
         }   
