@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from flask import Flask
 from flask import render_template
-import socket
+import socket 
 
 
 def dovizkuru():
