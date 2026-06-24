@@ -14,18 +14,18 @@ pipeline {
                 sh '''
                 rm -f Dockerfile
                 cat << "EOF" > Dockerfile
-                FROM python:3.8.20
-                ENV PYTHONUNBUFFERED=1
-                WORKDIR /app
-                COPY . .
-                RUN python -m pip install flask
-                RUN python -m pip install beautifulsoup4
-                RUN python -m pip install gunicorn
-                EXPOSE 5555
-                ENV FLASK_APP=app.py
-                ENV FLASK_ENV=development
-                ENTRYPOINT ["flask", "run"]
-                CMD ["--host=0.0.0.0", "--port=5555"]
+FROM python:3.8.20
+ENV PYTHONUNBUFFERED=1
+WORKDIR /app
+COPY . .
+RUN python -m pip install --no-cache-dir requests
+RUN python -m pip install --no-cache-dir flask
+RUN python -m pip install --no-cache-dir beautifulsoup4
+RUN python -m pip install --no-cache-dir gunicorn
+EXPOSE 5555
+ENV FLASK_APP=app.py
+ENV FLASK_ENV=development
+CMD ["gunicorn", "--bind", "0.0.0.0:5555", "app:app"]
                 '''
             } 
         }   
